@@ -18,8 +18,7 @@ SRCS = $(SRC_DIR)/main.c \
        $(SRC_DIR)/stack_init.c \
        $(SRC_DIR)/stack_utils.c \
        $(SRC_DIR)/stack_utils2.c \
-       $(SRC_DIR)/free.c \
-       $(SRC_DIR)/error.c \
+       $(SRC_DIR)/errorandfree.c \
        $(SRC_DIR)/op_swap.c \
        $(SRC_DIR)/op_push.c \
        $(SRC_DIR)/op_rotate.c \
@@ -44,8 +43,7 @@ SHARED_SRCS = $(SRC_DIR)/parse.c \
               $(SRC_DIR)/stack_init.c \
               $(SRC_DIR)/stack_utils.c \
               $(SRC_DIR)/stack_utils2.c \
-              $(SRC_DIR)/free.c \
-              $(SRC_DIR)/error.c
+              $(SRC_DIR)/errorandfree.c
 
 BONUS_SRCS = $(SRC_DIR)/checker.c \
              $(SRC_DIR)/checker_ops.c \

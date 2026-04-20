@@ -1,8 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: memalli <memalli@student.42kocaeli.com.    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/04/20 17:19:53 by memalli           #+#    #+#             */
+/*   Updated: 2026/04/20 17:40:30 by memalli          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
+#include <stddef.h>
 
 int		is_flag(const char *str);
 int		is_valid_int(const char *str);
-int		is_within_int(long value);
+int		is_between_limits(long value);
 
 static int	has_duplicate(t_stack *a, int val)
 {
@@ -27,8 +40,8 @@ static void	validate_and_add(char *str, t_stack *a, char **split)
 		free_split(split);
 		error_exit(a, NULL);
 	}
-	val = ft_atoi(str);
-	if (!is_within_int(val) || has_duplicate(a, (int)val))
+	val = ft_atol(str);
+	if (!is_between_limits(val) || has_duplicate(a, (int)val))
 	{
 		free_split(split);
 		error_exit(a, NULL);

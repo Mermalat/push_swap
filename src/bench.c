@@ -1,10 +1,5 @@
 #include "push_swap.h"
 
-static const char	*g_op_names[] = {
-	"sa", "sb", "ss", "pa", "pb",
-	"ra", "rb", "rr", "rra", "rrb", "rrr"
-};
-
 static void	print_disorder(float disorder)
 {
 	int	whole;
@@ -37,21 +32,31 @@ static void	print_strategy(int strategy)
 static void	print_op_breakdown(t_config *cfg)
 {
 	int	i;
-
-	ft_putstr_fd("--- Operation Breakdown ---\n", 2);
+	static const char	*op_names[] = {
+		"sa", "sb", "ss", "pa", "pb",
+		"ra", "rb", "rr", "rra", "rrb", "rrr"
+	};
 	i = 0;
-	while (i < 11)
+	while (i < 5)
 	{
-		if (cfg->op_stats[i] > 0)
-		{
-			ft_putstr_fd("  ", 2);
-			ft_putstr_fd((char *)g_op_names[i], 2);
-			ft_putstr_fd(": ", 2);
-			ft_putnbr_fd(cfg->op_stats[i], 2);
-			ft_putchar_fd('\n', 2);
-		}
+		ft_putstr_fd("  ", 2);
+		ft_putstr_fd((char *)op_names[i], 2);
+		ft_putstr_fd(": ", 2);
+		ft_putnbr_fd(cfg->op_stats[i], 2);			
+		ft_putchar_fd(' ', 2);
 		i++;
 	}
+	ft_putchar_fd('\n', 2);
+	while (i < 11)
+	{
+		ft_putstr_fd("  ", 2);
+		ft_putstr_fd((char *)op_names[i], 2);
+		ft_putstr_fd(": ", 2);
+		ft_putnbr_fd(cfg->op_stats[i], 2);
+		ft_putchar_fd(' ', 2);
+		i++;
+	}
+	ft_putchar_fd('\n', 2);
 }
 
 void	print_bench(t_config *cfg)

@@ -1,4 +1,6 @@
 #include "push_swap.h"
+#include <stdlib.h>
+#include <unistd.h>
 
 void	swap_silent(t_stack *stack);
 void	push_silent(t_stack *dst, t_stack *src);

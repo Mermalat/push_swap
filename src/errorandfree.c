@@ -1,45 +1,57 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_utils2.c                                     :+:      :+:    :+:   */
+/*   errorandfree.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: memalli <memalli@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/20 15:24:18 by memalli           #+#    #+#             */
-/*   Updated: 2026/04/20 15:24:19 by memalli          ###   ########.fr       */
+/*   Created: 2026/04/20 16:14:41 by memalli           #+#    #+#             */
+/*   Updated: 2026/04/20 16:14:42 by memalli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdlib.h>
 
-int	find_node_pos(t_stack *stack, int index)
+void	error_exit(t_stack *a, t_stack *b)
 {
-	t_node	*cur;
-	int		pos;
-
-	cur = stack->top;
-	pos = 0;
-	while (cur)
-	{
-		if (cur->index == index)
-			return (pos);
-		cur = cur->next;
-		pos++;
-	}
-	return (-1);
+	ft_putstr_fd("Error\n", 2);
+	if (a)
+		free_stack(a);
+	if (b)
+		free_stack(b);
+	exit(1);
 }
 
-t_node	*get_node_at(t_stack *stack, int pos)
+void	free_stack(t_stack *stack)
 {
 	t_node	*cur;
-	int		i;
+	t_node	*tmp;
 
+	if (!stack)
+		return ;
 	cur = stack->top;
-	i = 0;
-	while (cur && i < pos)
+	while (cur)
 	{
-		cur = cur->next;
+		tmp = cur->next;
+		free(cur);
+		cur = tmp;
+	}
+	stack->top = NULL;
+	stack->size = 0;
+}
+
+void	free_split(char **split)
+{
+	int	i;
+
+	if (!split)
+		return ;
+	i = 0;
+	while (split[i])
+	{
+		free(split[i]);
 		i++;
 	}
-	return (cur);
+	free(split);
 }

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse_utils.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: memalli <memalli@student.42kocaeli.com.    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/04/20 17:19:50 by memalli           #+#    #+#             */
+/*   Updated: 2026/04/20 17:23:53 by memalli          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 int	is_flag(const char *str)
@@ -27,7 +39,7 @@ int	is_valid_int(const char *str)
 	return (1);
 }
 
-int	is_within_int(long value)
+int	is_between_limits(long value)
 {
 	return (value >= INT_MIN && value <= INT_MAX);
 }

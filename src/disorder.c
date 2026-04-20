@@ -1,4 +1,5 @@
 #include "push_swap.h"
+#include <stdlib.h>
 
 static int	*copy_to_array(t_stack *a)
 {

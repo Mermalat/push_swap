@@ -1,5 +1,5 @@
 #include "push_swap.h"
-
+#include <stddef.h>
 void	swap_silent(t_stack *stack)
 {
 	int	tmp_val;
