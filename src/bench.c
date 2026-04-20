@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   bench.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: memalli <memalli@student.42kocaeli.com.    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/04/20 19:00:50 by memalli           #+#    #+#             */
+/*   Updated: 2026/04/20 19:05:35 by memalli          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 static void	print_disorder(float disorder)
@@ -20,11 +32,11 @@ static void	print_strategy(int strategy)
 {
 	ft_putstr_fd("Strategy:  ", 2);
 	if (strategy == STRAT_SIMPLE)
-		ft_putstr_fd("simple (selection sort)\n", 2);
+		ft_putstr_fd("Simple (Selection sort) / O(nˆ2)\n", 2);
 	else if (strategy == STRAT_MEDIUM)
-		ft_putstr_fd("medium (chunk-based)\n", 2);
+		ft_putstr_fd("Medium (Chunk-based) / O(nlogn)\n", 2);
 	else if (strategy == STRAT_COMPLEX)
-		ft_putstr_fd("complex\n", 2);
+		ft_putstr_fd("Complex (Turk Algorithm) / O(nvn)\n", 2);
 	else
 		ft_putstr_fd("adaptive\n", 2);
 }
