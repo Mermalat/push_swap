@@ -1,0 +1,86 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   bench.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: memalli <memalli@student.42kocaeli.com.    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/04/24 15:57:54 by memalli           #+#    #+#             */
+/*   Updated: 2026/04/24 17:15:11 by memalli          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "push_swap.h"
+
+static void	print_disorder(float disorder)
+{
+	int	whole;
+	int	frac;
+
+	whole = (int)(disorder * 100);
+	frac = (int)(disorder * 10000) % 100;
+	ft_putstr_fd("Disorder:  ", 2);
+	ft_putnbr_fd(whole, 2);
+	ft_putchar_fd('.', 2);
+	if (frac < 10)
+		ft_putchar_fd('0', 2);
+	ft_putnbr_fd(frac, 2);
+	ft_putstr_fd("%\n", 2);
+}
+
+static void	print_strategy(int strategy)
+{
+	ft_putstr_fd("Strategy:  ", 2);
+	if (strategy == STRAT_SIMPLE)
+		ft_putstr_fd("Simple (Selection sort) / O(nˆ2)\n", 2);
+	else if (strategy == STRAT_MEDIUM)
+		ft_putstr_fd("Medium (Chunk-based) / O(nlogn)\n", 2);
+	else if (strategy == STRAT_COMPLEX)
+		ft_putstr_fd("Complex (Turk Algorithm) / O(nvn)\n", 2);
+	else
+		ft_putstr_fd("adaptive\n", 2);
+}
+
+static void	print_op_breakdown(t_config *cfg)
+{
+	int					i;
+	static const char	*op_names[] = {
+		"sa", "sb", "ss", "pa", "pb",
+		"ra", "rb", "rr", "rra", "rrb", "rrr"
+	};
+
+	i = 0;
+
+	while (i < 5)
+	{
+		ft_putstr_fd("  ", 2);
+		ft_putstr_fd((char *)op_names[i], 2);
+		ft_putstr_fd(": ", 2);
+		ft_putnbr_fd(cfg->op_stats[i], 2);
+		ft_putchar_fd(' ', 2);
+		i++;
+	}
+	ft_putchar_fd('\n', 2);
+	while (i < 11)
+	{
+		ft_putstr_fd("  ", 2);
+		ft_putstr_fd((char *)op_names[i], 2);
+		ft_putstr_fd(": ", 2);
+		ft_putnbr_fd(cfg->op_stats[i], 2);
+		ft_putchar_fd(' ', 2);
+		i++;
+	}
+	ft_putchar_fd('\n', 2);
+}
+
+void	print_bench(t_config *cfg)
+{
+	ft_putstr_fd("\n=== Benchmark Results ===\n", 2);
+	print_disorder(cfg->disorder);
+	print_strategy(cfg->strategy);
+	ft_putstr_fd("Total ops: ", 2);
+	ft_putnbr_fd(cfg->op_count, 2);
+	ft_putchar_fd('\n', 2);
+	print_op_breakdown(cfg);
+	ft_putstr_fd("=========================\n", 2);
+}
