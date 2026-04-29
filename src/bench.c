@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bench.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: memalli <memalli@student.42kocaeli.com.    +#+  +:+       +#+        */
+/*   By: alpturan <alpturan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/24 15:57:54 by memalli           #+#    #+#             */
-/*   Updated: 2026/04/24 17:15:11 by memalli          ###   ########.fr       */
+/*   Updated: 2026/04/29 16:13:23 by alpturan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,33 +41,33 @@ static void	print_strategy(int strategy)
 		ft_putstr_fd("adaptive\n", 2);
 }
 
+void	ft_stats_edit(t_config *cfg, const char **op_names, int i)
+{
+	ft_putstr_fd("  ", 2);
+	ft_putstr_fd((char *)op_names[i], 2);
+	ft_putstr_fd(": ", 2);
+	ft_putnbr_fd(cfg->op_stats[i], 2);
+	ft_putchar_fd(' ', 2);
+}
+
 static void	print_op_breakdown(t_config *cfg)
 {
-	int					i;
-	static const char	*op_names[] = {
+	int			i;
+	const char	*op_names[] = {
 		"sa", "sb", "ss", "pa", "pb",
 		"ra", "rb", "rr", "rra", "rrb", "rrr"
 	};
 
 	i = 0;
-
 	while (i < 5)
 	{
-		ft_putstr_fd("  ", 2);
-		ft_putstr_fd((char *)op_names[i], 2);
-		ft_putstr_fd(": ", 2);
-		ft_putnbr_fd(cfg->op_stats[i], 2);
-		ft_putchar_fd(' ', 2);
+		ft_stats_edit(cfg, op_names, i);
 		i++;
 	}
 	ft_putchar_fd('\n', 2);
 	while (i < 11)
 	{
-		ft_putstr_fd("  ", 2);
-		ft_putstr_fd((char *)op_names[i], 2);
-		ft_putstr_fd(": ", 2);
-		ft_putnbr_fd(cfg->op_stats[i], 2);
-		ft_putchar_fd(' ', 2);
+		ft_stats_edit(cfg, op_names, i);
 		i++;
 	}
 	ft_putchar_fd('\n', 2);
