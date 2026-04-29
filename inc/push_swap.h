@@ -6,7 +6,7 @@
 /*   By: memalli <memalli@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 18:19:43 by memalli           #+#    #+#             */
-/*   Updated: 2026/04/20 19:02:06 by memalli          ###   ########.fr       */
+/*   Updated: 2026/04/29 22:33:50 by memalli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ typedef struct s_stack
 typedef struct s_config
 {
 	int		strategy;
+	int		requested_strategy;
 	int		bench;
 	int		op_count;
 	int		op_stats[11];

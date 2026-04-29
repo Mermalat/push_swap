@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bench.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alpturan <alpturan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: memalli <memalli@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/24 15:57:54 by memalli           #+#    #+#             */
-/*   Updated: 2026/04/29 16:13:23 by alpturan         ###   ########.fr       */
+/*   Updated: 2026/04/29 22:34:05 by memalli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,17 +28,26 @@ static void	print_disorder(float disorder)
 	ft_putstr_fd("%\n", 2);
 }
 
-static void	print_strategy(int strategy)
+static void	print_strategy(t_config *cfg)
 {
+	int	strategy;
+
+	strategy = cfg->strategy;
 	ft_putstr_fd("Strategy:  ", 2);
+	if (cfg->requested_strategy == STRAT_ADAPTIVE
+		&& cfg->strategy != STRAT_ADAPTIVE)
+	{
+		ft_putstr_fd("Adaptive -> ", 2);
+	}
 	if (strategy == STRAT_SIMPLE)
-		ft_putstr_fd("Simple (Selection sort) / O(nˆ2)\n", 2);
+		ft_putstr_fd("Simple (Selection sort) / O(nˆ2)", 2);
 	else if (strategy == STRAT_MEDIUM)
-		ft_putstr_fd("Medium (Chunk-based) / O(nlogn)\n", 2);
+		ft_putstr_fd("Medium (Chunk-based) / O(nlogn)", 2);
 	else if (strategy == STRAT_COMPLEX)
-		ft_putstr_fd("Complex (Turk Algorithm) / O(nvn)\n", 2);
+		ft_putstr_fd("Complex (Turk Algorithm) / O(nvn)", 2);
 	else
-		ft_putstr_fd("adaptive\n", 2);
+		ft_putstr_fd("Adaptive", 2);
+	ft_putchar_fd('\n', 2);
 }
 
 void	ft_stats_edit(t_config *cfg, const char **op_names, int i)
@@ -77,7 +86,7 @@ void	print_bench(t_config *cfg)
 {
 	ft_putstr_fd("\n=== Benchmark Results ===\n", 2);
 	print_disorder(cfg->disorder);
-	print_strategy(cfg->strategy);
+	print_strategy(cfg);
 	ft_putstr_fd("Total ops: ", 2);
 	ft_putnbr_fd(cfg->op_count, 2);
 	ft_putchar_fd('\n', 2);

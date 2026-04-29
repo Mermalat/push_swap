@@ -6,7 +6,7 @@
 /*   By: memalli <memalli@student.42kocaeli.com.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 18:19:05 by memalli           #+#    #+#             */
-/*   Updated: 2026/04/20 18:19:06 by memalli          ###   ########.fr       */
+/*   Updated: 2026/04/29 22:34:35 by memalli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,10 @@ void	sort_dispatch(t_stack *a, t_stack *b, t_config *cfg)
 {
 	float	disorder;
 
-	if (sort_by_size(a, b, cfg))
-		return ;
 	disorder = calc_disorder(a);
 	cfg->disorder = disorder;
+	if (sort_by_size(a, b, cfg))
+		return ;
 	if (cfg->strategy == STRAT_ADAPTIVE)
 		adaptive_select(cfg, disorder);
 	run_strategy(a, b, cfg);

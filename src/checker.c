@@ -124,6 +124,7 @@ int	main(int ac, char **av)
 	init_stack(&a);
 	init_stack(&b);
 	cfg.strategy = STRAT_ADAPTIVE;
+	cfg.requested_strategy = STRAT_ADAPTIVE;
 	cfg.bench = 0;
 	cfg.op_count = 0;
 	parse_args(ac, av, &a, &cfg);

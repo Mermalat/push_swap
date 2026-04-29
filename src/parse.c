@@ -49,6 +49,22 @@ static void	validate_and_add(char *str, t_stack *a, char **split)
 	push_bottom(a, (int)val);
 }
 
+static int	set_strategy(char *arg, t_config *cfg)
+{
+	if (ft_strcmp(arg, "--simple") == 0)
+		cfg->strategy = STRAT_SIMPLE;
+	else if (ft_strcmp(arg, "--medium") == 0)
+		cfg->strategy = STRAT_MEDIUM;
+	else if (ft_strcmp(arg, "--complex") == 0)
+		cfg->strategy = STRAT_COMPLEX;
+	else if (ft_strcmp(arg, "--adaptive") == 0)
+		cfg->strategy = STRAT_ADAPTIVE;
+	else
+		return (0);
+	cfg->requested_strategy = cfg->strategy;
+	return (1);
+}
+
 static void	parse_flags(int ac, char **av, t_config *cfg)
 {
 	int	i;
@@ -56,15 +72,8 @@ static void	parse_flags(int ac, char **av, t_config *cfg)
 	i = 1;
 	while (i < ac)
 	{
-		if (ft_strcmp(av[i], "--simple") == 0)
-			cfg->strategy = STRAT_SIMPLE;
-		else if (ft_strcmp(av[i], "--medium") == 0)
-			cfg->strategy = STRAT_MEDIUM;
-		else if (ft_strcmp(av[i], "--complex") == 0)
-			cfg->strategy = STRAT_COMPLEX;
-		else if (ft_strcmp(av[i], "--adaptive") == 0)
-			cfg->strategy = STRAT_ADAPTIVE;
-		else if (ft_strcmp(av[i], "--bench") == 0)
+		if (!set_strategy(av[i], cfg)
+			&& ft_strcmp(av[i], "--bench") == 0)
 			cfg->bench = 1;
 		i++;
 	}
@@ -80,21 +89,19 @@ void	parse_args(int ac, char **av, t_stack *a, t_config *cfg)
 	i = 1;
 	while (i < ac)
 	{
-		if (is_flag(av[i]))
+		if (!is_flag(av[i]))
 		{
-			i++;
-			continue ;
+			split = ft_split(av[i], ' ');
+			if (!split)
+				error_exit(a, NULL);
+			j = 0;
+			while (split[j])
+			{
+				validate_and_add(split[j], a, split);
+				j++;
+			}
+			free_split(split);
 		}
-		split = ft_split(av[i], ' ');
-		if (!split)
-			error_exit(a, NULL);
-		j = 0;
-		while (split[j])
-		{
-			validate_and_add(split[j], a, split);
-			j++;
-		}
-		free_split(split);
 		i++;
 	}
 }

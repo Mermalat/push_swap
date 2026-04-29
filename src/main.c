@@ -17,6 +17,7 @@ static void	init_config(t_config *cfg)
 	int	i;
 
 	cfg->strategy = STRAT_ADAPTIVE;
+	cfg->requested_strategy = STRAT_ADAPTIVE;
 	cfg->bench = 0;
 	cfg->op_count = 0;
 	cfg->disorder = 0.0f;
