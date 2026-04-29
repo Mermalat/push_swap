@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: memalli <memalli@student.42kocaeli.com.    +#+  +:+       +#+        */
+/*   By: alpturan <alpturan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 18:18:33 by memalli           #+#    #+#             */
-/*   Updated: 2026/04/20 18:18:34 by memalli          ###   ########.fr       */
+/*   Updated: 2026/04/29 15:31:12 by alpturan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ static void	init_config(t_config *cfg)
 	cfg->strategy = STRAT_ADAPTIVE;
 	cfg->bench = 0;
 	cfg->op_count = 0;
+	cfg->count_only = 0; // count only
 	cfg->disorder = 0.0f;
 	i = 0;
 	while (i < 11)
@@ -41,6 +42,11 @@ int	main(int ac, char **av)
 		return (0);
 	assign_indices(&a);
 	sort_dispatch(&a, &b, &cfg);
+	if (cfg.count_only) // count only
+	{
+		ft_putnbr_fd(cfg.op_count, 1);
+		ft_putchar_fd('\n', 1);
+	}
 	if (cfg.bench)
 		print_bench(&cfg);
 	free_stack(&a);

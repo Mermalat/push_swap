@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: memalli <memalli@student.42kocaeli.com.    +#+  +:+       +#+        */
+/*   By: alpturan <alpturan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 17:19:53 by memalli           #+#    #+#             */
-/*   Updated: 2026/04/20 17:40:30 by memalli          ###   ########.fr       */
+/*   Updated: 2026/04/29 14:59:03 by alpturan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,8 @@ static void	parse_flags(int ac, char **av, t_config *cfg)
 			cfg->strategy = STRAT_ADAPTIVE;
 		else if (ft_strcmp(av[i], "--bench") == 0)
 			cfg->bench = 1;
+		else if (ft_strcmp(av[i], "--count") == 0) // count only
+			cfg->count_only = 1;
 		i++;
 	}
 }

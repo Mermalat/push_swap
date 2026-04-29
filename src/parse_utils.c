@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   parse_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: memalli <memalli@student.42kocaeli.com.    +#+  +:+       +#+        */
+/*   By: alpturan <alpturan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 17:19:50 by memalli           #+#    #+#             */
-/*   Updated: 2026/04/20 17:23:53 by memalli          ###   ########.fr       */
+/*   Updated: 2026/04/25 18:23:00 by alpturan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <limits.h>
 
 int	is_flag(const char *str)
 {

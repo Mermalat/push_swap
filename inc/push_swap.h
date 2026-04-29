@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: memalli <memalli@student.42kocaeli.com.    +#+  +:+       +#+        */
+/*   By: alpturan <alpturan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 18:19:43 by memalli           #+#    #+#             */
-/*   Updated: 2026/04/20 19:02:06 by memalli          ###   ########.fr       */
+/*   Updated: 2026/04/29 14:56:32 by alpturan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ typedef struct s_config
 {
 	int		strategy;
 	int		bench;
+	int		count_only; // count only için
 	int		op_count;
 	int		op_stats[11];
 	float	disorder;
